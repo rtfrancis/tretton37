@@ -13,9 +13,13 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
+    "client-install": "cd client && npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "dev-server": "nodemon server.js",
+    "client": "cd meet-us && npm start",
+    "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
+    "prod": "concurrently \"npm run start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
