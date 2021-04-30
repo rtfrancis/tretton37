@@ -1,0 +1,30 @@
+{
+  "name": "tretton37",
+  "version": "1.0.0",
+  "description": "Coding assignment",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.6",
+    "concurrently": "^6.0.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtfrancis/tretton37.git"
+  },
+  "author": "RF",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rtfrancis/tretton37/issues"
+  },
+  "homepage": "https://github.com/rtfrancis/tretton37#readme"
+}
