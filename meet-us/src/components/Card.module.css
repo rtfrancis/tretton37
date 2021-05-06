@@ -1,0 +1,123 @@
+/* blue: #0c2c52 */
+/* green: #80C565 */
+
+.card {
+    /* border: 1px solid black; */
+    min-width: 340px;
+    /* width: 30%; */
+    height: 240px;
+    /* margin-right: 20px; */
+    margin-bottom: 40px;
+    position: relative;
+    cursor: pointer;
+    /* border-radius: 18px; */
+    /* overflow: hidden; */
+}
+
+
+.cardContent {
+    width: 180px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* .cardContent:hover{
+    position: static;
+} */
+
+.cardContent:hover > .imageContainer > .image{
+    opacity: 1;
+}
+.cardContent:hover > .textContainer {
+    color: #80C565;
+}
+.cardContent:hover > .textContainer > .name {
+    /* position: absolute; */
+    margin-left: -80px;
+    margin-top: -40px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.cardContent:hover > .textContainer > .office {
+    right: -80px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.cardContent:hover > .textContainer > .last {
+    /* visibility: visible; */
+    /* transition: 1s; */
+    animation: fadeIn 1s;
+    opacity: 1;
+}
+
+.image { 
+    width:180px;
+    opacity: 0.3;
+    height: 240px;
+    object-fit: cover;
+    /* position: absolute; */
+    border-radius: 10px;
+    transition: 1s;
+}
+/* .image:hover{
+    opacity: 1;
+} */
+/* .image:hover > .textContainer:hover{
+    color: pink;
+} */
+
+.textContainer {
+    /* border: 1px solid red; */
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    bottom: 0;
+    color: #0c2c52;
+}
+
+.name {
+    text-align: left;
+    margin-left: 4px;
+    /* margin-top: 0; */
+    left: 0;
+    font-size: 20px;
+    transition: 1s;
+    font-weight: 600;
+}
+
+.office {
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    transition: 1s;
+}
+
+.last {
+    opacity: 0;
+   /* visibility: hidden; */
+   /* transition: transform 1s ease-in; */
+   text-align: left;
+   margin-left: -80px;
+   /* transition-delay: 1s; */
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+/* .verticalOffice {
+    border: 1px solid blue;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
