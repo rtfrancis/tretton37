@@ -1,5 +1,9 @@
-.container{
+/* blue: #0c2c52 */
+/* green: #80C565 */
+
+.employeeContainer{
     margin: 0 auto;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -7,4 +11,69 @@
     width: 95%;
     max-width: 1100px;
     min-height: 300px;
+}
+
+.spaceHolder{
+    height: 30px;
+}
+
+.toolBar{
+    height: 30px;
+    position: relative;
+    background: #80C565;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* ///////////////////// Office Names & Letter Groups ///////////////// */
+.officesContainer{
+    margin: 0 auto;
+    display: flex;
+    width: 70%;
+    font-size: 18px;
+    justify-content: space-around;
+}
+
+.officesContainer > div{
+    cursor: pointer;
+    color: #0c2c52;
+    animation: fadeIn .3s;
+    transition: transform .2s;
+}
+
+.officesContainer > div:hover{
+    color: #80C565;
+    transform: scale(1.1);
+}
+
+.namesContainer{
+    margin: 0 auto;
+    display: flex;
+    width: 70%;
+    font-size: 18px;
+    justify-content: space-around;
+    animation: fadeIn .3s;
+}
+
+.namesContainer > div {
+    cursor: pointer;
+    color: #0c2c52;
+    transition: transform .2s;
+}
+
+.namesContainer > div:hover{
+    color: #80C565;
+    transform: scale(1.1);
+}
+/* /////////////////////////////////////////////////////////// */
+
+div.selected{
+    color: #80C565;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
 }

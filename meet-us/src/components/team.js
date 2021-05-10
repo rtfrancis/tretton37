@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmployeeCard from "./Card"
-import SortingComponent from "./SortingBar"
-import FilteringComponent from "./FilterBar";
+import Toolbar from "./Toolbar"
 import TeamStyles from "./Team.module.css";
 
 
@@ -10,43 +9,61 @@ function TeamPage() {
     const [ employees, setEmployees ] = useState([]);
     const [ filteredEmployees, setFilteredEmployees ] = useState(employees);
     const [ sort, setSort ] = useState("name");
-    const [ filter, setFilter ] = useState('none');
-    const [ office, setOffice ] = useState("none")
+    const [ filter, setFilter ] = useState(null);
+    const [ office, setOffice ] = useState(null);
+    const [ nameGroup, setNameGroup ] = useState(null);
 
+    // Functions for sort option //
     const updateSort = data => {
-      setSort(data)
-      sortCards(data);
-      // console.log("Form>", data)
-    }
-
-    const updateFilter = data => {
-      // console.log("DAAAAATA", data)
-      if (data == 0) {
-        setFilteredEmployees([])
-        setFilter("none");
+      setFilteredEmployees(employees)
+      if(filter !== null){
+        setFilter(null);
+        setOffice(null);
+        setNameGroup(null);
+        setSort(data);
+        sortCards(data);
       } else {
-        setFilter(data);
+        setSort(data);
+        sortCards(data);
       }
-      // console.log("Filter form", filteredEmployees)
-    }
-
-    const selectOffice = data => {
-      setOffice(data);
-      setFilteredEmployees(employees.filter(each => each.office === data));
-      // console.log(filteredEmployees)
     }
 
     const sortCards = (option) => {
       employees.sort(function(x,y){
-        let a = option === "office" ? x.office.toUpperCase() : x.name.toUpperCase()
-        let b = option === "office" ? y.office.toUpperCase() : y.name.toUpperCase()
+        let a = option === "office" ? x.office.toUpperCase() : x.name.toUpperCase();
+        let b = option === "office" ? y.office.toUpperCase() : y.name.toUpperCase();
         return a == b ? 0 : a > b ? 1 : -1;
       })
     }
 
+    // Functions for updating filter options //
+    const updateFilter = data => {
+      if (data === 0) {
+        setFilteredEmployees(employees);
+        setFilter(null);
+        setNameGroup(null);
+        setOffice(null);
+      } else {
+        setSort(null);
+        setFilter(data);
+      }
+    }
+
+    const selectOffice = data => {
+      sortCards("name");
+      setOffice(data);
+      setFilter("office");
+      setNameGroup(null);
+      setFilteredEmployees(employees.filter(each => each.office === data));
+    }
+
     const filterEmployeesByName = (option) => {
+      updateFilter("name");
+      sortCards("name");
+      setFilteredEmployees(employees);
+      setNameGroup(option);
       let letterGroups = [["A", "B", "C", "D", "E", "F", "G"], ["H", "I", "J", "K", "L", "M"], ["N", "O", "P", "Q", "R", "S", "T"], ["U", "V", "W", "X", "Y", "Z", "Å", "İ", "Ž"]];
-      let arr = letterGroups[option]
+      let arr = letterGroups[option];
       let nameFilter = [];
       for(var i = 0; i < employees.length; i++){
         for(var j = 0; j < arr.length; j++){
@@ -55,26 +72,37 @@ function TeamPage() {
           }
         }
       }
-      // console.log("NAMESSSS!", nameFilter)
       setFilteredEmployees(nameFilter);
     }
-
+    
     useEffect(() => {
-        fetch('/api/ninjas').then(res => res.json()).then(data => setEmployees(data))
+        fetch('/api/ninjas').then(res => res.json()).then(data => {setEmployees(data); setFilteredEmployees(data)});
     }, [])
   
 
   return (
     <div>
-      <h2>Meet Us</h2>
-     
-      <div>
-        <SortingComponent props={sort} onChange={(e) => { updateSort(e)}}/>
+      
+      <Toolbar filter={filter} sort={sort} updateSort={(val) => { updateSort(val)}} updateFilter={ (val) => { updateFilter(val) }}/>
 
-        <FilteringComponent props={filter} office={office} updateFilter={ (e) => { updateFilter(e) }} selectOffice={ (e) => { selectOffice(e) }} nameFilter={ (e) => { filterEmployeesByName(e) }}/>
+      <div className={TeamStyles.spaceHolder}>
+          {filter === "office" ? <div className={TeamStyles.officesContainer}>
+            <div className={office === "Borlänge" ? TeamStyles.selected : null} onClick={() => selectOffice("Borlänge")}>Borlänge</div>
+            <div className={office === "Helsingborg" ? TeamStyles.selected : null} onClick={() => selectOffice("Helsingborg")}>Helsingborg</div>
+            <div className={office === "Ljubljana" ? TeamStyles.selected : null} onClick={() => selectOffice("Ljubljana")}>Ljubljana</div>
+            <div className={office === "Lund" ? TeamStyles.selected : null} onClick={() => selectOffice("Lund")}>Lund</div>
+            <div className={office === "Stockholm" ? TeamStyles.selected : null} onClick={() => selectOffice("Stockholm")}>Stockholm</div>
+          </div> : null}
+
+          {filter === "name" ? <div className={TeamStyles.namesContainer}>
+            <div className={nameGroup === 0 ? TeamStyles.selected : null} onClick={() => filterEmployeesByName(0)}>A - G</div>
+            <div className={nameGroup === 1 ? TeamStyles.selected : null} onClick={() => filterEmployeesByName(1)}>H - M</div>
+            <div className={nameGroup === 2 ? TeamStyles.selected : null} onClick={() => filterEmployeesByName(2)}>N - T</div>
+            <div className={nameGroup === 3 ? TeamStyles.selected : null} onClick={() => filterEmployeesByName(3)}>U - Z ...</div>
+          </div> : null}
       </div>
 
-      <div className={TeamStyles.container}>
+      <div className={TeamStyles.employeeContainer}>
         {filteredEmployees.length > 0 ? filteredEmployees.map(item => (
             <EmployeeCard key={item.name} props={item}/>
         )) : employees.map(item => (
