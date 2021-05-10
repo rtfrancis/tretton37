@@ -11,6 +11,7 @@ return axios(url)
     const $ = cheerio.load(html);
     const employees = $('.ninjas > .ninja-summary');
     const ninjas = [];
+    // const logo = $('.branding');
     
         employees.each(function () {
             const link = $(this).find('.contact-info > h1 > a').attr('href');
@@ -22,19 +23,19 @@ return axios(url)
             const fullName = name.split(/\s+/);
 
             const first = fullName[0];
-            const second = fullName.length === 3 ? fullName[1] : undefined;
-            const last = fullName.length === 3 ? fullName[2] : fullName[1];
+            const second = fullName.length === 3 ? `${fullName[1]} ${fullName[2]}` : fullName[1];
+            // const last = fullName.length === 3 ? fullName[2] : fullName[1];
 
             ninjas.push({
                 link,
                 name,
                 office,
                 image,
-                full: { first, second, last},
+                full: { first, second },
                 flag
             });
         });
-        // console.log(ninjas)
+        // console.log("teeesting", logo)
         return ninjas;
         
     }).catch(err => console.log("error", err));
