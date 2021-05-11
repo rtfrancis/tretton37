@@ -2,7 +2,7 @@
 
 #### Installation: 
 
-After you're cloned the project, cd into the "tretton37" folder and run `npm install`. After that has finished, run `npm run client-install`. And now that those are done, you can start the server and run the app with `npm run prod`.
+After you've cloned the project, cd into the "tretton37" folder and run `npm install`. After that has finished, run `npm run client-install`. Once those are done, you can start the server and run the app with `npm run prod`.
 
 #### Project:
 
@@ -26,7 +26,7 @@ The code is designed to be reusable, and could still be broken even smaller, int
 <u>Testing/QA:</u>
 
 - <u>Works in Chrome, Firefox, Edge (1)</u>: I thought it was important for the page to work on the most used browsers.
-- <u>Unit Testing (2)</u>: Unfortunately testing is still something I've used much and have wanted to learn. This was a great opportunity to at least attempt some. 
+- <u>Unit Testing (2)</u>: Unfortunately tests are still something I haven't written and have wanted to learn. This was a great opportunity to at least attempt some. 
 
 
 
