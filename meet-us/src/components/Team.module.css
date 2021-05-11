@@ -1,7 +1,7 @@
 /* blue: #0c2c52 */
 /* green: #80C565 */
 
-.employeeContainer{
+.employeeContainer {
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
@@ -13,11 +13,11 @@
     min-height: 300px;
 }
 
-.spaceHolder{
+.spaceHolder {
     height: 30px;
 }
 
-.toolBar{
+.toolBar {
     height: 30px;
     position: relative;
     background: #80C565;
@@ -25,8 +25,14 @@
     margin-bottom: 30px;
 }
 
+div.selected {
+    color: #80C565;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 /* ///////////////////// Office Names & Letter Groups ///////////////// */
-.officesContainer{
+.officesContainer {
     margin: 0 auto;
     display: flex;
     width: 70%;
@@ -34,19 +40,19 @@
     justify-content: space-around;
 }
 
-.officesContainer > div{
+.officesContainer > div {
     cursor: pointer;
     color: #0c2c52;
     animation: fadeIn .3s;
     transition: transform .2s;
 }
 
-.officesContainer > div:hover{
+.officesContainer > div:hover {
     color: #80C565;
     transform: scale(1.1);
 }
 
-.namesContainer{
+.namesContainer {
     margin: 0 auto;
     display: flex;
     width: 70%;
@@ -61,17 +67,11 @@
     transition: transform .2s;
 }
 
-.namesContainer > div:hover{
+.namesContainer > div:hover {
     color: #80C565;
     transform: scale(1.1);
 }
 /* /////////////////////////////////////////////////////////// */
-
-div.selected{
-    color: #80C565;
-    text-decoration: underline;
-    font-weight: bold;
-}
 
 @keyframes fadeIn {
     0% {opacity: 0}

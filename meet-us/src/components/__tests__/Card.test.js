@@ -10,7 +10,6 @@ const employee = {
     office: "Lund"
 }
 
-
 test('should render card component', () => {
     render(<Card props={employee}/>);
     const cardElement = screen.getByTestId('fullCard')

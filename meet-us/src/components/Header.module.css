@@ -1,16 +1,19 @@
-.header{
+.header {
     color: white;
     background-color: #0c2c52;
     height: 75px;
 }
 
-h1{
+h1 {
     font-weight: 200;
     text-align: left;
+    float: left;
     padding: 15px;
     margin-left: 15px;
+    width: 130px;
 }
-a{
+
+a {
     text-decoration: none;
     color: white;
 }

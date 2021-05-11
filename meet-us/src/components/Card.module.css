@@ -14,40 +14,6 @@
     margin: 0 auto;
 }
 
-.cardContent:hover > .imageContainer > .image{
-    opacity: 1;
-}
-
-.cardContent:hover > .textContainer {
-    color: #80C565;
-}
-
-.cardContent:hover > .textContainer > .firstName {
-    margin-left: -80px;
-    margin-top: -40px;
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.cardContent:hover > .textContainer > .office {
-    right: -83px;
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.cardContent:hover > .textContainer > .lastName {
-    animation: fadeIn 1s;
-    opacity: 1;
-}
-
-.cardContent:hover > .textContainer > .buttonContainer {
-    visibility: visibile;
-    animation: fadeIn 1s;
-    animation-delay: .5s;
-    animation-fill-mode: forwards;
-}
-
-
 .image { 
     width:180px;
     opacity: 0.3;
@@ -89,7 +55,7 @@
    margin-left: -80px;
 }
 
-.buttonContainer{
+.buttonContainer {
     position: relative;
     bottom: 10px;
     opacity: 0;
@@ -97,11 +63,7 @@
     transition: transform .2s;
 }
 
-.buttonContainer:hover{
-    transform: scale(1.1);
-}
-
-.button{
+.button {
     cursor: pointer;
     width: 115px;
     height: 24px;
@@ -117,4 +79,43 @@
 @keyframes fadeIn {
     0% {opacity: 0}
     100% {opacity: 1}
+}
+
+/* //////////////////////// Hover states /////////////////////// */
+
+.cardContent:hover > .imageContainer > .image {
+    opacity: 1;
+}
+
+.cardContent:hover > .textContainer {
+    color: #80C565;
+}
+
+.cardContent:hover > .textContainer > .firstName {
+    margin-left: -80px;
+    margin-top: -40px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.cardContent:hover > .textContainer > .office {
+    right: -83px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.cardContent:hover > .textContainer > .lastName {
+    animation: fadeIn 1s;
+    opacity: 1;
+}
+
+.cardContent:hover > .textContainer > .buttonContainer {
+    visibility: visibile;
+    animation: fadeIn 1s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+}
+
+.buttonContainer:hover {
+    transform: scale(1.1);
 }

@@ -1,4 +1,4 @@
-.toolbar{
+.toolbar {
     height: 50px;
     position: relative;
     background: #80C565;
@@ -6,17 +6,8 @@
     font-style: italic;
     margin-bottom: 30px;
 }
-.headline{
-    display: inline-block;
-    height: 100%;
-    padding: 6px;
-    text-align: left;
-    position: absolute;
-    left: 24px;
-    font-size: 25px;
-    font-weight: 200;
-}
-.toolContainer{
+
+.toolContainer {
     width: 40%;
     height: 100%;
     display: flex;
@@ -26,39 +17,52 @@
     justify-content: space-around;
 }
 
+.headline {
+    display: inline-block;
+    height: 100%;
+    padding: 6px;
+    text-align: left;
+    position: absolute;
+    left: 24px;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.hidden {
+    visibility: hidden;
+    margin-left: 10px;
+}
+
 .icon {
     margin-left: 6px;
     cursor: pointer;
     transition: transform .2s;
 }
 
-.icon:hover{
+.icon:hover {
     color: #e4e6e8;
     transform: scale(1.2);
 }
 
-.sortingBar, .filterBar{
+.sortingBar, .filterBar {
     display: flex;
     height: 100%;
     align-items: center;
 }
 
-.hidden{
-    visibility: hidden;
-    margin-left: 10px;
-}
 
-.resetButton{
+
+.resetButton {
     margin-left: 10px;
     cursor: pointer;
     transition: transform .2s;
 }
 
-.resetButton:hover{
+.resetButton:hover {
     color: #e4e6e8;
     transform: scale(1.2);
 }
 
-.selected{
+.selected {
     color: #e4e6e8;
 }

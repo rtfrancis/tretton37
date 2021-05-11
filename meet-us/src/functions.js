@@ -2,7 +2,7 @@ module.exports.sortCards = (option, arr) => {
     arr.sort(function(x,y){
       let a = option === "office" ? x.office.toUpperCase() : x.name.toUpperCase();
       let b = option === "office" ? y.office.toUpperCase() : y.name.toUpperCase();
-      return a == b ? 0 : a > b ? 1 : -1;
+      return a === b ? 0 : a > b ? 1 : -1;
     })
   }
 
