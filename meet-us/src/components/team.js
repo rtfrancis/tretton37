@@ -3,6 +3,7 @@ import EmployeeCard from "./Card"
 import Toolbar from "./Toolbar"
 import TeamStyles from "./Team.module.css";
 
+import { sortCards, filterByName } from "../functions";
 
 function TeamPage() {
     
@@ -21,20 +22,20 @@ function TeamPage() {
         setOffice(null);
         setNameGroup(null);
         setSort(data);
-        sortCards(data);
+        sortCards(data, employees);
       } else {
         setSort(data);
-        sortCards(data);
+        sortCards(data, employees);
       }
     }
 
-    const sortCards = (option) => {
-      employees.sort(function(x,y){
-        let a = option === "office" ? x.office.toUpperCase() : x.name.toUpperCase();
-        let b = option === "office" ? y.office.toUpperCase() : y.name.toUpperCase();
-        return a == b ? 0 : a > b ? 1 : -1;
-      })
-    }
+    // const sortCards = (option) => {
+    //   employees.sort(function(x,y){
+    //     let a = option === "office" ? x.office.toUpperCase() : x.name.toUpperCase();
+    //     let b = option === "office" ? y.office.toUpperCase() : y.name.toUpperCase();
+    //     return a == b ? 0 : a > b ? 1 : -1;
+    //   })
+    // }
 
     // Functions for updating filter options //
     const updateFilter = data => {
@@ -50,7 +51,7 @@ function TeamPage() {
     }
 
     const selectOffice = data => {
-      sortCards("name");
+      sortCards("name", employees);
       setOffice(data);
       setFilter("office");
       setNameGroup(null);
@@ -59,20 +60,20 @@ function TeamPage() {
 
     const filterEmployeesByName = (option) => {
       updateFilter("name");
-      sortCards("name");
+      sortCards("name", employees);
       setFilteredEmployees(employees);
       setNameGroup(option);
-      let letterGroups = [["A", "B", "C", "D", "E", "F", "G"], ["H", "I", "J", "K", "L", "M"], ["N", "O", "P", "Q", "R", "S", "T"], ["U", "V", "W", "X", "Y", "Z", "Å", "İ", "Ž"]];
-      let arr = letterGroups[option];
-      let nameFilter = [];
-      for(var i = 0; i < employees.length; i++){
-        for(var j = 0; j < arr.length; j++){
-          if(employees[i].name.charAt(0) === arr[j]){
-            nameFilter.push(employees[i])
-          }
-        }
-      }
-      setFilteredEmployees(nameFilter);
+      // let letterGroups = [["A", "B", "C", "D", "E", "F", "G"], ["H", "I", "J", "K", "L", "M"], ["N", "O", "P", "Q", "R", "S", "T"], ["U", "V", "W", "X", "Y", "Z", "Å", "İ", "Ž"]];
+      // let arr = letterGroups[option];
+      // let nameFilter = [];
+      // for(var i = 0; i < employees.length; i++){
+      //   for(var j = 0; j < arr.length; j++){
+      //     if(employees[i].name.charAt(0) === arr[j]){
+      //       nameFilter.push(employees[i])
+      //     }
+      //   }
+      // }
+      setFilteredEmployees(filterByName(option, employees));
     }
     
     useEffect(() => {
@@ -81,7 +82,7 @@ function TeamPage() {
   
 
   return (
-    <div>
+    <div data-testid="teamContainer">
       
       <Toolbar filter={filter} sort={sort} updateSort={(val) => { updateSort(val)}} updateFilter={ (val) => { updateFilter(val) }}/>
 
@@ -102,7 +103,7 @@ function TeamPage() {
           </div> : null}
       </div>
 
-      <div className={TeamStyles.employeeContainer}>
+      <div data-testid="teamCards" className={TeamStyles.employeeContainer}>
         {filteredEmployees.length > 0 ? filteredEmployees.map(item => (
             <EmployeeCard key={item.name} props={item}/>
         )) : employees.map(item => (

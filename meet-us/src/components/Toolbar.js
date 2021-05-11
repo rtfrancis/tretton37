@@ -15,7 +15,7 @@ function ToolBar(props){
     }
 
     return(
-        <div className={ToolbarStyles.toolbar}>
+        <div data-testid="toolbar-main" className={ToolbarStyles.toolbar}>
             <div className={ToolbarStyles.headline}>Get to know the team</div>
             <div className={ToolbarStyles.toolContainer}>
 
@@ -24,13 +24,13 @@ function ToolBar(props){
                     
                     <div data-tip="Name" data-delay-show='1000' className={ToolbarStyles.icon}>
                         <span className={props.sort === "name" ? ToolbarStyles.selected : null}>
-                            <BsFillPersonFill size='2em' onClick={() => selectSortOption("name")}/>
+                            <BsFillPersonFill data-testid="name-sort" size='2em' onClick={() => selectSortOption("name")}/>
                         </span>
                     </div>
 
                     <div data-tip="Office" data-delay-show='1000' className={ToolbarStyles.icon}>
                         <span className={props.sort === "office" ? ToolbarStyles.selected : null}>
-                            <HiOutlineOfficeBuilding size='2em' onClick={() => selectSortOption("office")}/>
+                            <HiOutlineOfficeBuilding data-testid="office-sort" size='2em' onClick={() => selectSortOption("office")}/>
                         </span>
                     </div> 
                 </div>
@@ -40,13 +40,13 @@ function ToolBar(props){
 
                     <div data-tip="Name" data-delay-show='1000' className={ToolbarStyles.icon}>
                         <span className={props.filter === "name" ? ToolbarStyles.selected : null}>
-                            <BsFillPersonFill size='2em' onClick={() => handleClick("name")}/>
+                            <BsFillPersonFill data-testid="name-filter" size='2em' onClick={() => handleClick("name")}/>
                         </span>
                     </div>
 
                     <div data-tip="Office" data-delay-show='1000' className={ToolbarStyles.icon}>
                         <span className={props.filter === "office" ? ToolbarStyles.selected : null}>
-                            <HiOutlineOfficeBuilding size='2em' onClick={() => handleClick("office")}/>
+                            <HiOutlineOfficeBuilding data-testid="office-filter" size='2em' onClick={() => handleClick("office")}/>
                         </span>
                     </div>
 

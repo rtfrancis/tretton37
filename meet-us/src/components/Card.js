@@ -4,7 +4,7 @@ function EmployeeCard(props) {
     const { image, link, office, full, name, flag } = props.props;
     
     return(
-        <div className={CardStyles.card}>
+        <div data-testid="fullCard" className={CardStyles.card}>
             <div className={CardStyles.cardContent}>
                 <div className={CardStyles.imageContainer}>
                     <img className={CardStyles.image} src={image} alt={name}/>
