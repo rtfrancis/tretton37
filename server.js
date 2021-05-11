@@ -4,7 +4,7 @@ const grabNinjas = require('./scraper.js')
 
 
 app.get('/api/ninjas', (req, res) => {
-    grabNinjas().then(data => res.json(data))
+    grabNinjas().then(data => res.json(data)).catch(err => console.log(err))
 })
 
 const port = 3001;
