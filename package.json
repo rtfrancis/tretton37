@@ -13,7 +13,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "client-install": "cd client && npm install",
+    "client-install": "cd meet-us && npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev-server": "nodemon server.js",
